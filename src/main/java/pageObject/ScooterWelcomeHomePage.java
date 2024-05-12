@@ -1,9 +1,12 @@
-package pageObject;
+package pageobject;
 
 import org.junit.Assert;
 import org.openqa.selenium.*;
 
 import java.time.Duration;
+
+import static pageobject.constants.URL.HOME_PAGE;
+import static pageobject.constants.URL.ORDER_PAGE;
 
 public class ScooterWelcomeHomePage {
         private WebDriver driver;
@@ -36,7 +39,7 @@ public class ScooterWelcomeHomePage {
         //Проверка: открыта ли страница оформления заказа
         public void checkOrderPageOpened(){
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        Assert.assertEquals("Не открылась страница оформления заказа", "https://qa-scooter.praktikum-services.ru/order", driver.getCurrentUrl());
+        Assert.assertEquals("Не открылась страница оформления заказа", ORDER_PAGE, driver.getCurrentUrl());
     }
         //Проверка нажатия на верхнюю кнопку "Заказать"
         public void clickUpperOrderButton() {
@@ -59,7 +62,7 @@ public class ScooterWelcomeHomePage {
         samokatLogo.click();
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        Assert.assertEquals("Не открылась главная страница Самокат", "https://qa-scooter.praktikum-services.ru/", driver.getCurrentUrl());
+        Assert.assertEquals("Не открылась главная страница Самокат", HOME_PAGE, driver.getCurrentUrl());
     }
 
     }

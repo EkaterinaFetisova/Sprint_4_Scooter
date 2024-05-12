@@ -1,23 +1,8 @@
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import pageObject.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import pageobject.ScooterWelcomeHomePage;
 
 
-public class MainTests {
-    private WebDriver driver;
-
-    @Before
-    public void beforeTest() {
-        ChromeOptions options = new ChromeOptions();
-        driver = new FirefoxDriver();
-        //driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-    }
+public class MainTests extends BeforeAfter{
 
     //Проверка названия раздела "Вопросы о важном"
     @Test
@@ -49,9 +34,4 @@ public class MainTests {
         objScooterPage.checkOpenHomePageSamokat();
     }
 
-    @After
-    public void teardown() {
-        // Закрыть браузер
-        driver.quit();
-    }
 }

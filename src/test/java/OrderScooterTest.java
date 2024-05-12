@@ -1,17 +1,12 @@
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import pageObject.ScooterOrderPage;
+import pageobject.ScooterOrderPage;
 
-import static pageObject.ScooterWelcomeHomePage.UPPER_BUTTON;
+import static pageobject.ScooterWelcomeHomePage.UPPER_BUTTON;
 
 @RunWith(Parameterized.class)
-public class OrderScooterTest {
+public class OrderScooterTest extends BeforeAfter{
     private final String name;
     private final String surname;
     private final String address;
@@ -23,7 +18,6 @@ public class OrderScooterTest {
     private final String comment;
     private final String button;
 
-    private WebDriver driver;
     public OrderScooterTest(String name, String surname, String address, String metroStationName, String phone, String date, String period, String color, String comment, String button) {
 
         this.name = name;
@@ -45,13 +39,6 @@ public class OrderScooterTest {
                 {"Мухаммед", "Сармоджон", "Ватутина 1", "Ленинский проспект", "+79999999999", "10.06.2024", "двое суток", "gray", "Реку надо завалить. Камнем. Камень я не дам.",UPPER_BUTTON}
         };
     }
-@Before
-public void setup() {
-        ChromeOptions options = new ChromeOptions();
-        //driver = new ChromeDriver(options);
-        driver = new FirefoxDriver();
-    driver.get("https://qa-scooter.praktikum-services.ru");
-}
     //Проверка оформления заказа
     @Test
     public void checkMakingOrder() {
@@ -66,10 +53,5 @@ public void setup() {
                 .checkOrderConfirmationModal();
 
         objOrderForm.checkOrderStatusModal();
-    }
-    @After
-    public void teardown() {
-        // Закрыть браузер
-        driver.quit();
     }
 }

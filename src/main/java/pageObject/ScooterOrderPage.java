@@ -1,4 +1,4 @@
-package pageObject;
+package pageobject;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -11,8 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-import static pageObject.ScooterWelcomeHomePage.LOWER_BUTTON;
-import static pageObject.ScooterWelcomeHomePage.UPPER_BUTTON;
+import static pageobject.ScooterWelcomeHomePage.LOWER_BUTTON;
+import static pageobject.ScooterWelcomeHomePage.UPPER_BUTTON;
 
 public class ScooterOrderPage {
     private final WebDriver driver;

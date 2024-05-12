@@ -1,19 +1,15 @@
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import pageObject.ScooterQuestionsHomePage;
-import static pageObject.ScooterQuestionsHomePage.*;
+import pageobject.ScooterQuestionsHomePage;
 
-    @RunWith(Parameterized.class)
-    public class QuestionsTest {
-        private WebDriver driver;
+import static pageobject.ScooterQuestionsHomePage.*;
+
+@RunWith(Parameterized.class)
+    public class QuestionsTest extends BeforeAfter{
+
         // Элементы выпадающего списка: Вопрос и Ответ
         private final By questionLocator;
         private final By answerLocator;
@@ -41,13 +37,7 @@ import static pageObject.ScooterQuestionsHomePage.*;
                     {QUESTION8, ANSWER8, TEXT_QUESTION8, TEXT_ANSWER8},
             };
         }
-        @Before
-        public void beforeTest() {
-            ChromeOptions options = new ChromeOptions();
-            driver = new FirefoxDriver();
-            //driver = new ChromeDriver(options);
-            driver.get("https://qa-scooter.praktikum-services.ru/");
-        }
+
         // Проверка на соответствие текстов вопроса и ответа ожидаемым значениям
         @Test
         public void shouldCheckQuestionAndAnswer() {
@@ -60,11 +50,6 @@ import static pageObject.ScooterQuestionsHomePage.*;
 
             Assert.assertEquals("Несоответствие фактического текста вопроса ожидаемому: ", questionExpectedText, questionActualText);
             Assert.assertEquals("Несоответствие фактического текста ответа ожидаемому: ", questionExpectedAnswer, answerActualText);
-        }
-        @After
-        public void teardown() {
-            // Закрыть браузер
-            driver.quit();
         }
     }
 
